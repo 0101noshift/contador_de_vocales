@@ -2,17 +2,13 @@ from tkinter import *
 
 ventana = Tk()
 ventana.title("Contador de Vocales")
-ventana.geometry("530x140")
+ventana.geometry("450x100")
+ventana.resizable(1,1)
 ventana.configure(bg="#FFF2CC")
 
 
-def calcular_todos():
-    global a_label_rta
-    global e_label_rta
-    global i_label_rta
-    global o_label_rta
-    global u_label_rta
-
+#Función
+def calcular_todos(*args):
     vowels = 'aeiou'
     ip_str = str(texEntry.get())
     ip_str = ip_str.casefold()
@@ -30,42 +26,72 @@ def calcular_todos():
     o_label_rta.config(text=o_count)
     u_label_rta.config(text=u_count)
 
-
-a_label = Label(ventana, text="A =", font=(
-    "Courier", 14, "bold"), bg="#FFF2CC").grid(row=0, column=0)
-e_label = Label(ventana, text="E =", font=(
-    "Courier", 14, "bold"), bg="#FFF2CC").grid(row=0, column=2)
-i_label = Label(ventana, text="I =", font=(
-    "Courier", 14, "bold"), bg="#FFF2CC").grid(row=0, column=4)
-o_label = Label(ventana, text="O =", font=(
-    "Courier", 14, "bold"), bg="#FFF2CC").grid(row=0, column=6)
-u_label = Label(ventana, text="U =", font=(
-    "Courier", 14, "bold"), bg="#FFF2CC").grid(row=0, column=8)
-
-a_label_rta = Label(ventana, text=" ", font=(
-    "Courier", 14, "bold"), bg="#FFE5CC", fg="#FF6565")
-e_label_rta = Label(ventana, text=" ", font=(
-    "Courier", 14, "bold"), bg="#FFE5CC", fg="#FF6565")
-i_label_rta = Label(ventana, text=" ", font=(
-    "Courier", 14, "bold"), bg="#FFE5CC", fg="#FF6565")
-o_label_rta = Label(ventana, text=" ", font=(
-    "Courier", 14, "bold"), bg="#FFE5CC", fg="#FF6565")
-u_label_rta = Label(ventana, text=" ", font=(
-    "Courier", 14, "bold"), bg="#FFE5CC", fg="#FF6565")
-
+#A
+a_label = Label(ventana,
+                text="A =",
+                font=("Algerian 14 bold"),
+                bg="#FFF2CC").grid(row=0, column=0)
+a_label_rta = Label(ventana,
+                    text=" ",
+                    font=("Algerian 14 bold"),
+                    bg="#FFE5CC",
+                    fg="#FF6565")
 a_label_rta.grid(row=0, column=1)
+
+#E
+e_label = Label(ventana,
+                text="E =",
+                font=("Algerian", 14, "bold"),
+                bg="#FFF2CC").grid(row=0, column=2)
+e_label_rta = Label(ventana,
+                    text=" ",
+                    font=("Algerian 14 bold"),
+                    bg="#FFE5CC",
+                    fg="#FF6565")
 e_label_rta.grid(row=0, column=3)
+
+#I
+i_label = Label(ventana,
+                text="I =",
+                font=("Algerian 14 bold"),
+                bg="#FFF2CC").grid(row=0, column=4)
+i_label_rta = Label(ventana,
+                    text=" ",
+                    font=("Algerian 14 bold"),
+                    bg="#FFE5CC",
+                    fg="#FF6565")
 i_label_rta.grid(row=0, column=5)
+
+#O
+o_label = Label(ventana,
+                text="O =",
+                font=("Algerian 14 bold"),
+                bg="#FFF2CC").grid(row=0, column=6)
+o_label_rta = Label(ventana,
+                    text=" ",
+                    font=("Algerian 14 bold"),
+                    bg="#FFE5CC",
+                    fg="#FF6565")
 o_label_rta.grid(row=0, column=7)
+
+#U
+u_label = Label(ventana,
+                text="U =",
+                font=("Algerian 14 bold"),
+                bg="#FFF2CC").grid(row=0, column=8)
+u_label_rta = Label(ventana,
+                    text=" ",
+                    font=("Algerian 14 bold"),
+                    bg="#FFE5CC",
+                    fg="#FF6565")
 u_label_rta.grid(row=0, column=9)
 
-btn1 = Button(ventana, text="CONTAR", command=calcular_todos,
-              width=11, height=1, bg="yellow", font=("Courier", 12, "bold"))
-btn1.grid(row=1, column=3, columnspan=3, sticky=S+E)
-
-texEntry = Entry(ventana, bg="#fbc599", fg="#9b726f",
-                 font=("Courier", 12, "bold"), width=50)
-texEntry.focus()
-texEntry.grid(row=2, column=0, columnspan=10)
+texEntry = Entry(ventana,
+                 bg="#fbc599",
+                 fg="#9b726f",
+                 font=("Algerian 12 bold"),
+                 width=35)
+texEntry.bind("<Key>", calcular_todos)
+texEntry.grid(row=2, column=1, columnspan=8)
 
 ventana.mainloop()
